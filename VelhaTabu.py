@@ -7,9 +7,13 @@ Created on Tue Apr 19 10:01:31 2016
 
 import tkinter as tk
 
+XO = "---"
 
 
 class Tabuleiro:
+    
+
+    
     def __init__(self):
         self.window = tk.Tk()
         self.window.geometry("300x330+500+200")
@@ -19,14 +23,15 @@ class Tabuleiro:
         self.window.rowconfigure(3, minsize=30, weight=1)
         self.window.columnconfigure(0, minsize=100, weight=1)
         self.window.columnconfigure(1, minsize=100, weight=1)
-        self.window.columnconfigure(2, minsize=100, weight=1)
+        self.window.columnconfigure(2, minsize=100, weight=1)       
+        self.i = 1
+        self.j = "X"
         
         def botao(x, y):
             botao = tk.Button(self.window)
             botao.configure(command=lambda i=x, j=y: self.jogada(i,j))
-            botao.configure(text='X', font='Arial 72')
+            botao.configure(text=XO, font='Arial 72')
             botao.grid(row=x, column=y, sticky="nsew")
-            
 
             
         self.botoes = []
@@ -36,19 +41,39 @@ class Tabuleiro:
                 linha_botoes.append(botao(i,j))
             self.botoes.append(linha_botoes)
             
-        label = tk.Label(self.window)
-        label.configure(text="Next player's turn: ")
-        label.grid(row=3, column=0)
+
+            
+        self.label = tk.Label(self.window)
+        self.label.configure(text="Próxima jogada: {0}".format(self.j))
+        self.label.grid(row=3, column=0)
+    
+    
+    def jogada(self, x, y):
+        if self.i % 2 == 0:
+            XO = "O"
+        else:
+            XO = "X"
+        botao = tk.Button(self.window)
+        botao.configure(text=XO, font='Arial 72')
+        botao.grid(row=x, column=y, sticky="nsew")
         
+        # LABEL É O SÍMBOLO OPOSTO AO DO JOGO
+        if XO == "X":
+            self.j = "O"
+        else:
+            self.j = "X"
+        self.label.configure(text="Próxima jogada: {0}".format(self.j))
+        
+        self.i += 1
+         
 
     def iniciar(self):
         self.window.mainloop()
-
-#    def jogada(self, row, column):
-        
+    
 
 app = Tabuleiro()
 app.iniciar()
+
 
 
 
