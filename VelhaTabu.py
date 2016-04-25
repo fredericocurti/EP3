@@ -2,12 +2,12 @@
 """
 Created on Tue Apr 19 10:01:31 2016
 
-@author: Guilherme Moraes & Frederico Curti
+@author: Guilherme Moraes
 """
 
 import tkinter as tk
 
-XO = "---"
+XO = ""
 
 
 class Tabuleiro:
@@ -30,7 +30,7 @@ class Tabuleiro:
         def botao(x, y):
             botao = tk.Button(self.window)
             botao.configure(command=lambda i=x, j=y: self.jogada(i,j))
-            botao.configure(text=XO, font='Arial 72')
+            botao.configure(text=XO, font='Arial 72',)
             botao.grid(row=x, column=y, sticky="nsew")
 
             
@@ -51,10 +51,12 @@ class Tabuleiro:
     def jogada(self, x, y):
         if self.i % 2 == 0:
             XO = "O"
+            f = "red"
         else:
             XO = "X"
+            f = "blue"
         botao = tk.Button(self.window)
-        botao.configure(text=XO, font='Arial 72')
+        botao.configure(text=XO, font='Arial 72',fg=f)
         botao.grid(row=x, column=y, sticky="nsew")
         
         # LABEL É O SÍMBOLO OPOSTO AO DO JOGO
