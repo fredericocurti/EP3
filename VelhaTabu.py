@@ -2,7 +2,7 @@
 """
 Created on Tue Apr 19 10:01:31 2016
 
-@author: Guilherme Moraes
+@author: Guilherme Moraes & Frederico Curti
 """
 
 import tkinter as tk
