@@ -1,5 +1,5 @@
 
-class Jogao:
+class Jogo:
     def __init__(self):
         
         self.tabuleiro = [[0,0,0], [0,0,0], [0,0,0]]
