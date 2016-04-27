@@ -124,6 +124,6 @@ class Tabuleiro:
     def iniciar(self):
         self.window.mainloop()
     
-J = Jogao()
+J = Jogo()
 app = Tabuleiro()
 app.iniciar()
